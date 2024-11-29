@@ -18,7 +18,7 @@ public class Master_Thief extends Robot
 		// After trying out your robot, try uncommenting the import at the top,
 		// and the next line:
 
-		 setColors(Color.white,Color.yellow,Color.black); // body,gun,radar
+		 setColors(Color.white,Color.red,Color.black); // body,gun,radar
 
 		// Robot main loop
 		while(true) {
