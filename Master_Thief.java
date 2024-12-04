@@ -1,6 +1,12 @@
-package Master_t; 
+package Master_t;
 import robocode.*;
 import java.awt.Color;
+import robocode.Robot;
+import robocode.ScannedRobotEvent;
+import robocode.WinEvent;
+import static robocode.util.Utils.normalRelativeAngleDegrees;
+
+import java.awt.*;
 
 // API help : https://robocode.sourceforge.io/docs/robocode/robocode/Robot.html
 
@@ -37,11 +43,11 @@ public class Master_Thief extends AdvancedRobot
 		// Replace the next line with any behavior you wo
 			double absoluteBearing = getHeading() + e.getBearing();
 		double bearingFromGun = normalRelativeAngleDegrees(absoluteBearing - getGunHeading());
-		if (Math.abs(bearingFromGun) <= 3) {
+		if (Math.abs(bearingFromGun) <= 3){
 			turnGunRight(bearingFromGun);
 			if (getGunHeat() == 0) {
 				fire(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - .1));
-	}
+	}}
 			else {
 			turnGunRight(bearingFromGun);
 		}
