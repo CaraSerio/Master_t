@@ -7,7 +7,7 @@ import java.awt.Color;
 /**
  * Master_Thief - a robot by (your name here) - VERSÃO 000
  */
-public class Master_Thief extends Robot
+public class Master_Thief extends AdvancedRobot
 {
 	/**
 	 * run: Master_Thief's default behavior
@@ -33,11 +33,22 @@ public class Master_Thief extends Robot
 	/**
 	 * onScannedRobot: What to do when you see another robot
 	 */
-	public void onScannedRobot(ScannedRobotEvent e) {
-		// Replace the next line with any behavior you would like
-		fire(1);
+	public void onScannedRobot(ScannedRobotEvent  e) {
+		// Replace the next line with any behavior you wo
+			double absoluteBearing = getHeading() + e.getBearing();
+		double bearingFromGun = normalRelativeAngleDegrees(absoluteBearing - getGunHeading());
+		if (Math.abs(bearingFromGun) <= 3) {
+			turnGunRight(bearingFromGun);
+			if (getGunHeat() == 0) {
+				fire(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - .1));
 	}
-
+			else {
+			turnGunRight(bearingFromGun);
+		}
+			if (bearingFromGun == 0) {
+			scan();
+			}
+		}
 	/**
 	 * onHitByBullet: What to do when you're hit by a bullet
 	 */
