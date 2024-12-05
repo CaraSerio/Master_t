@@ -6,6 +6,7 @@ import robocode.ScannedRobotEvent;
 import robocode.WinEvent;
 import static robocode.util.Utils.normalRelativeAngleDegrees;
 
+
 import java.awt.*;
 
 // API help : https://robocode.sourceforge.io/docs/robocode/robocode/Robot.html
@@ -15,9 +16,11 @@ import java.awt.*;
  */
 public class Master_Thief extends AdvancedRobot
 {
-	/**
+   /*
 	 * run: Master_Thief's default behavior
 	 */
+int roboDetectado = 0;
+   
 	public void run() {
 		// Initialization of the robot should be put here
 
@@ -27,12 +30,20 @@ public class Master_Thief extends AdvancedRobot
 		 setColors(Color.black,Color.magenta,Color.yellow); // body,gun,radar
 
 		// Robot main loop
+		// Robot main loop
 		while(true) {
-			// Replace the next 4 lines with any behavior you would like
-			ahead(100);
-			turnGunRight(360);
-			back(100);
-			turnGunRight(360);
+			if(roboDetectado == 0){
+			setAhead(100);
+			setTurnRight(90);
+			setTurnGunRight(360);
+			execute();
+			} else {
+				setAhead(100);
+				setTurnLeft(90);
+				setTurnGunRight(4);
+				setTurnGunLeft(4);
+				execute();
+			}
 		}
 	}
 
@@ -68,6 +79,8 @@ public class Master_Thief extends AdvancedRobot
 	 */
 	public void onHitWall(HitWallEvent e) {
 		// Replace the next line with any behavior you would like
-		back(20);
+		setBack(25);
+		setTurnLeft(45);
+		execute();
 	}	
 }
