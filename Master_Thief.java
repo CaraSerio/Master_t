@@ -1,4 +1,4 @@
-package Master_t;
+package Diogo_Lindo;
 import robocode.*;
 import java.awt.Color;
 import robocode.Robot;
@@ -12,9 +12,9 @@ import java.awt.*;
 // API help : https://robocode.sourceforge.io/docs/robocode/robocode/Robot.html
 
 /**
- * Master_Thief - a robot by (your name here) - VERSÃO 000
+ * Nabucodonosor - a robot by (your name here)
  */
-public class Master_Thief extends AdvancedRobot
+public class Nabucodonosor extends AdvancedRobot
 {
    /*
 	 * run: Master_Thief's default behavior
@@ -37,12 +37,6 @@ int roboDetectado = 0;
 			setTurnRight(90);
 			setTurnGunRight(360);
 			execute();
-			} else {
-				setAhead(100);
-				setTurnLeft(90);
-				setTurnGunRight(4);
-				setTurnGunLeft(4);
-				execute();
 			}
 		}
 	}
@@ -51,13 +45,18 @@ int roboDetectado = 0;
 	 * onScannedRobot: What to do when you see another robot
 	 */
 	public void onScannedRobot(ScannedRobotEvent  e) {
-		// Replace the next line with any behavior you wo
+		
 			double absoluteBearing = getHeading() + e.getBearing();
-		double bearingFromGun = normalRelativeAngleDegrees(absoluteBearing - getGunHeading());
-		if (Math.abs(bearingFromGun) <= 3){
-			turnGunRight(bearingFromGun);
-			if (getGunHeat() == 0) {
-				fire(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - .1));
+				double bearingFromGun = normalRelativeAngleDegrees(absoluteBearing - getGunHeading());
+					if (Math.abs(bearingFromGun) <= 3){
+						turnGunRight(bearingFromGun);
+							if (getGunHeat() == 0) {
+									setAhead(110);
+									setTurnLeft(90);
+									setTurnGunRight(2);
+									setTurnGunLeft(2);
+									setFireBullet(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - .1));
+									execute();
 	}}
 			else {
 			turnGunRight(bearingFromGun);
