@@ -43,7 +43,7 @@ int roboDetectado = 0;
 									setTurnLeft(90);
 									setTurnGunRight(2);
 									setTurnGunLeft(2);
-									setFireBullet(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - .1));
+									setFire(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - .1));
 									execute();
 	}}
 			else {
@@ -56,7 +56,9 @@ int roboDetectado = 0;
 
 	public void onHitByBullet(HitByBulletEvent e) {
 	
-		back(10);
+		setBack(25);
+		setTurnLeft(45);
+		execute();
 	}
 	
 
